@@ -2,10 +2,10 @@ const addCompleteCloth = require('express').Router()
 const addCompleteClothController = require('../controllers/addCompleteCloth')
 
 addCompleteCloth.post('/addCompleteCloth', async (req, res) => {
-  let {title, price, size, pictureURL, colorHexCode} = req.body
+  let {title, price, size, pictureURL, colorHexCode, featured} = req.body
   if(title && price && size && pictureURL && colorHexCode){
     try{
-      let newCloth = await addCompleteClothController(title, price, size, pictureURL, colorHexCode)
+      let newCloth = await addCompleteClothController(title, price, size, pictureURL, colorHexCode, featured)
       console.log('IM IN!!!')
       res.status(200).json(newCloth)
     }
