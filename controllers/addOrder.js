@@ -1,5 +1,6 @@
 const orderModel = require('../models/OrderModel')
 const showOutOfStock = require('./showOutOfStock')
+const clothModel = require('../models/ClothModel')
 
 module.exports = async (cart, emailAddress, firstName, lastName, country, streetAddress, postalCode, city, aptNumber, phoneNumber) => {
   let result = {}
@@ -9,7 +10,7 @@ module.exports = async (cart, emailAddress, firstName, lastName, country, street
     result.object = outOfStocks
     return result
   }
-  //TODO: substract Stock.
+  await substractStock(cart)
   let newOrder = await orderModel.create({
     email: emailAddress,
     firstName: firstName,
@@ -23,4 +24,14 @@ module.exports = async (cart, emailAddress, firstName, lastName, country, street
     cart: cart,
     status: 'Awaiting payment!'
   })
+  result.message = 'Order created'
+  result.object = newOrder
+  return result
+}
+
+const substractStock = async (cart) => {
+  let clothes = Object.keys(cart)
+  for(let cloth of clothes){
+    await clothModel.findByIdAndUpdate(cloth, {$inc: {stock: -Number(cart[cloth])}})
+  }
 }
