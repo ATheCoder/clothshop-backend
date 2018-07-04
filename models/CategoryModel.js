@@ -4,6 +4,6 @@ let schema = mongoose.Schema({
   title: String
 })
 
-let CategoryModel = mongoose.model('CategoryModel', schema)
+let CategoryModel = mongoose.model('Category', schema)
 
 module.exports = CategoryModel

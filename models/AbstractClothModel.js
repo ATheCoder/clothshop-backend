@@ -5,7 +5,7 @@ let schema = new mongoose.Schema({
   title: String,
   price: Number,
   clothes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Cloth'}],
-  //catagories: TODO: Catagories
+  category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
   pictureURL: String
 })
 
