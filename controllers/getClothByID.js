@@ -1,5 +1,8 @@
 const clothModel = require('../models/ClothModel')
 
 module.exports = async (id) => {
-  return await clothModel.find({abstract: id}).populate('abstract').populate('category')
+  return await clothModel.find({abstract: id}).populate('abstract').populate({
+    path: 'abstract',
+    populate: {path: 'category'}
+  })
 }
