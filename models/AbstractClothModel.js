@@ -4,7 +4,6 @@ let schema = new mongoose.Schema({
   featured: Boolean,
   title: String,
   price: Number,
-  clothes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Cloth'}],
   category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
   pictureURL: String
 })
