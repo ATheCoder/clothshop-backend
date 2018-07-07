@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
   res.status(200).send('Its working!')
 })
 
-app.get('/jenkins', (req, res) => {
+app.get('/api/jenkins', (req, res) => {
   res.status(200).send('Jenkins is Working')
 })
 
