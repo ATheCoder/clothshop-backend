@@ -18,10 +18,6 @@ app.get('/', (req, res) => {
   res.status(200).send('Its working!')
 })
 
-app.get('/api/jenkins', (req, res) => {
-  res.status(200).send('Jenkins is Working')
-})
-
 //Connecting to Database:
 mongoose.connect(databaseURL);
 const db = mongoose.connection;
