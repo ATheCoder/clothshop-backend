@@ -1,18 +1,27 @@
-swagger: "2.0"
+swagger: '2.0'
 
 info:
   version: 1.0.0
-  title: Simple API
-  description: A simple API to learn how to write OpenAPI Specification
+  title: Pygamilion API
+  description: API for the Pygamilion Cloth Shop Website.
 
 schemes:
   - http
 host: arasharbabi.com
 basePath: /api
+tags:
+  - name: Clothes
+    description: Everything about Clothes.
+  - name: Colors
+    description: Everything about Colors.
+  - name: Categories
+    description: Eveything about Categories.
 
 paths:
-  /addCompleteCloth:
+  /abstract/add:
     post:
+      tags:
+        - "Clothes"
       summary: Adds a new abstract Cloth.
       parameters:
           - name: "body"
@@ -22,25 +31,99 @@ paths:
               $ref: '#/definitions/abstractCloth'
       responses:
         200:
-          description: A list of Person
+          description: Gives a JSON of the created abstract.
+          schema:
+            $ref: '#/definitions/abstractCloth'
+  /abstract/{id}:
+    get:
+      tags:
+        - "Clothes"
+      summary: Gets all the clothes assosiated with this abstract ID.
+      parameters:
+        - name: "id"
+          type: string
+          in: "path"
+          description: This ID will be used to find all the clothes that are assosiated with it.
+          required: true
+      responses:
+        200:
+          description: Gives an array of the clothes.
           schema:
             type: array
             items:
-              required:
-                - username
-              properties:
-                firstName:
-                  type: string
-                lastName:
-                  type: string
-                username:
-                  type: string
+              $ref: '#/definitions/cloth'
+    delete:
+      tags:
+        - "Clothes"
+      summary: Deletes a Cloth.
+      parameters:
+        - name: "id"
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: Success
+        400:
+          description: The ID was not found
+  /abstract:
+    get:
+      tags:
+        - "Clothes"
+      summary: Gets all the abstract Clothes.
+      description: If no parameter is provided all the abstractClothes will be returned
+      parameters:
+        - name: "textToSearch"
+          type: string
+          description: The text to search for inside the Database
+          in: query
+        - name: "featured"
+          type: boolean
+          in: query
+          description: If true will only return abstract Clothes that are featured.
+      responses:
+        200:
+          description: success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/abstractCloth'
+    put:
+      tags:
+        - "Clothes"
+      summary: Updates a cloth.
+      description: The ID value will be used to find the abstractCloth to be updated.
+      parameters:
+        - name: "body"
+          in: "body"
+          schema:
+            $ref: '#/definitions/abstractCloth'
+      responses:
+        200:
+          description: 'Success'
+        400:
+          description: 'The abstractCloth was not found please check the ID'
+  /color:
+    post:
+      tags:
+        - "Colors"
+      summary: Adds a new Color.
+      parameters:
+        - name: "body"
+          in: "body"
+          required: true
+          schema:
+            $ref: '#/definitions/color'
+      responses:
+        200:
+          description: 'Success'
+
 definitions:
   abstractCloth:
     type: "object"
-    required:
-      - "title"
     properties:
+      _id:
+        type: string
       featured:
         type: boolean
       title:
@@ -48,11 +131,44 @@ definitions:
       price:
         type: integer
       category:
-        type: string
+        $ref: '#/definitions/category'
       pictureURL:
         type: string
   cloth:
     type: "object"
     properties:
+      _id:
+        type: string
       abstract:
         $ref: '#/definitions/abstractCloth'
+      size:
+        type: string
+      pictureURL:
+        type: string
+      color:
+        $ref: '#/definitions/color'
+      sales:
+        type: integer
+      stock:
+        type: integer
+  color:
+    type: "object"
+    properties:
+      _id:
+        type: string
+        description: 'If this ID is suplied then an already existing color will be used that corresponds with this ID. This should not be passed on POST Requests creating a Color'
+        example: ""
+      name:
+        type: string
+      hexCode:
+        type: string
+      pictureURL:
+        type: string
+  category:
+    type: "object"
+    properties:
+      _id:
+        type: string
+        description: 'If this ID is suplied then an already existing Category will be used that corresponds with this ID.'
+      title:
+        type: string
