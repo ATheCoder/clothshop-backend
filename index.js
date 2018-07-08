@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const config = require('./config')
+const cors = require('cors')
 const mongoose = require('mongoose')
 const ColorModel = require('./models/ColorModel')
 const AbstractClothModel = require('./models/AbstractClothModel')
@@ -12,6 +13,7 @@ let {port, env, databaseURL} = config
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
+app.use(cors())
 app.use('/api', routes)
 
 app.get('/', (req, res) => {
