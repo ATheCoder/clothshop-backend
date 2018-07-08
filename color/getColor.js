@@ -1,4 +1,4 @@
-const colorModel = require('../models/ColorModel')
+const colorModel = require('./ColorModel')
 
 module.exports = async (colorID) => {
   if(colorID !== undefined)

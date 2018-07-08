@@ -1,7 +1,7 @@
 const colorRoute = require('express').Router()
-const addColor = require('../controllers/addColor')
-const getColor = require('../controllers/getColor')
-const colorModel = require('../models/ColorModel')
+const addColor = require('../color/addColor')
+const getColor = require('../color/getColor')
+const colorModel = require('../color/ColorModel')
 
 colorRoute.get('/color/:id', async (req, res) => {
   try{

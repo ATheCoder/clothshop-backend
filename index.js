@@ -4,21 +4,29 @@ const bodyParser = require('body-parser')
 const config = require('./config')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const ColorModel = require('./models/ColorModel')
-const AbstractClothModel = require('./models/AbstractClothModel')
-const ClothModel = require('./models/ClothModel')
+const ColorModel = require('./color/ColorModel')
+const AbstractClothModel = require('./cloth/AbstractClothModel')
+const ClothModel = require('./cloth/ClothModel')
 const routes = require('./routes/index')
-const addCompleteCloth = require('./controllers/addCompleteCloth')
+const addCompleteCloth = require('./cloth/addCompleteCloth')
+
+const swaggerUi = require('swagger-ui-express')
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+
+
 let {port, env, databaseURL} = config
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(cors())
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api', routes)
 
 app.get('/', (req, res) => {
   res.status(200).send('Its working!')
 })
+
 
 //Connecting to Database:
 mongoose.connect(databaseURL);

@@ -1,5 +1,5 @@
 const addCompleteCloth = require('express').Router()
-const addCompleteClothController = require('../controllers/addCompleteCloth')
+const addCompleteClothController = require('../cloth/addCompleteCloth')
 
 addCompleteCloth.post('/addCompleteCloth', async (req, res) => {
   let {title, price, size, pictureURL, colorHexCode, featured, category} = req.body

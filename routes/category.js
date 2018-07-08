@@ -1,5 +1,5 @@
 const category = require('express').Router()
-const deleteCategory = require('../controllers/deleteCategory')
+const deleteCategory = require('../category/deleteCategory')
 
 category.delete('/category/:id', async (req, res) => {
   try {

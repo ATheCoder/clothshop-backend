@@ -1,0 +1,58 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: Simple API
+  description: A simple API to learn how to write OpenAPI Specification
+
+schemes:
+  - http
+host: arasharbabi.com
+basePath: /api
+
+paths:
+  /addCompleteCloth:
+    post:
+      summary: Adds a new abstract Cloth.
+      parameters:
+          - name: "body"
+            in: "body"
+            description: The person to create.
+            schema:
+              $ref: '#/definitions/abstractCloth'
+      responses:
+        200:
+          description: A list of Person
+          schema:
+            type: array
+            items:
+              required:
+                - username
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                username:
+                  type: string
+definitions:
+  abstractCloth:
+    type: "object"
+    required:
+      - "title"
+    properties:
+      featured:
+        type: boolean
+      title:
+        type: string
+      price:
+        type: integer
+      category:
+        type: string
+      pictureURL:
+        type: string
+  cloth:
+    type: "object"
+    properties:
+      abstract:
+        $ref: '#/definitions/abstractCloth'

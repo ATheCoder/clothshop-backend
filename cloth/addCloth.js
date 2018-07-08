@@ -1,6 +1,6 @@
-const abstractClothModel = require('../models/AbstractClothModel')
-const clothModel = require('../models/ClothModel')
-const colorModel = require('../models/ColorModel')
+const abstractClothModel = require('./AbstractClothModel')
+const clothModel = require('./ClothModel')
+const colorModel = require('../color/ColorModel')
 
 const addCloth = async (abstractObjectID, size, pictureURL, colorObjectID) => {
   try{

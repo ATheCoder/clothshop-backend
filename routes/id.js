@@ -1,5 +1,5 @@
 const id = require('express').Router()
-const getClothByID = require('../controllers/getClothByID')
+const getClothByID = require('../cloth/getClothByID')
 
 id.get('/id/:id', async (req, res) => {
   let clothes = await getClothByID(req.params.id)

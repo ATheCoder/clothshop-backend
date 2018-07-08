@@ -1,6 +1,6 @@
 const orderModel = require('../models/OrderModel')
 const showOutOfStock = require('./showOutOfStock')
-const clothModel = require('../models/ClothModel')
+const clothModel = require('../cloth/ClothModel')
 
 module.exports = async (cart, emailAddress, firstName, lastName, country, streetAddress, postalCode, city, aptNumber, phoneNumber) => {
   let result = {}

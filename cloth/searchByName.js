@@ -1,4 +1,4 @@
-const abstractClothModel = require('../models/AbstractClothModel')
+const abstractClothModel = require('./AbstractClothModel')
 
 module.exports = async (textToSearchFor) => {
   try{

@@ -1,4 +1,4 @@
-const clothModel = require('../models/ClothModel')
+const clothModel = require('../cloth/ClothModel')
 
 module.exports = async (cart) => {
   let clothIDs = Object.keys(cart)

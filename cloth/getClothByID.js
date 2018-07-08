@@ -1,4 +1,4 @@
-const clothModel = require('../models/ClothModel')
+const clothModel = require('./ClothModel')
 
 module.exports = async (id) => {
   return await clothModel.find({abstract: id}).populate('color').populate('abstract').populate({

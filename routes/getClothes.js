@@ -1,7 +1,7 @@
 const getClothes = require('express').Router()
-const getAllClothes = require('../controllers/getAllClothes')
-const getFeaturedClothes = require('../controllers/getFeaturedClothes')
-const searchByName = require('../controllers/searchByName')
+const getAllClothes = require('../cloth/getAllClothes')
+const getFeaturedClothes = require('../cloth/getFeaturedClothes')
+const searchByName = require('../cloth/searchByName')
 
 getClothes.get('/getClothes', async (req, res) => {
   try{
