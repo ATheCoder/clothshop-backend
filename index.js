@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
   res.status(200).send('Its working!')
 })
 
-app.post('/upload', upload.single("file"), (req, res) => {
+app.post('/api/upload', upload.single("file"), (req, res) => {
   const tempPath = req.file.path
   const targetPath = path.join("/var/www/html/uploads/", req.file.originalname)
   //const targetPath = path.join(__dirname, "./uploads/image.png")
