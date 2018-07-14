@@ -33,7 +33,7 @@ app.post('/api/upload', upload.single("file"), (req, res) => {
   //const targetPath = path.join(__dirname, "./uploads/image.png")
   fs.rename(tempPath, targetPath, err => {
     if(err) res.status(500).send(err)
-    else res.status(200).send(targetPath)
+    else res.status(200).send('http://arasharbabi.com/uploads/' + req.file.originalname)
   })
 })
 
