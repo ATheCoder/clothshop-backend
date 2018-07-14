@@ -4,16 +4,16 @@ const bodyParser = require('body-parser')
 const config = require('./config')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const ColorModel = require('./color/ColorModel')
-const AbstractClothModel = require('./cloth/AbstractClothModel')
-const ClothModel = require('./cloth/ClothModel')
 const routes = require('./routes/index')
-const addCompleteCloth = require('./cloth/addCompleteCloth')
+const multer = require('multer')
+const path = require('path')
+const fs = require('fs')
 
 const swaggerUi = require('swagger-ui-express')
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./swagger.yaml');
 
+const upload = multer({dest: "upload/"})
 
 let {port, env, databaseURL} = config
 
@@ -27,6 +27,15 @@ app.get('/', (req, res) => {
   res.status(200).send('Its working!')
 })
 
+app.post('/upload', upload.single("file"), (req, res) => {
+  const tempPath = req.file.path
+  const targetPath = path.join("/var/www/html/uploads/", req.file.originalname)
+  //const targetPath = path.join(__dirname, "./uploads/image.png")
+  fs.rename(tempPath, targetPath, err => {
+    if(err) res.status(500).send(err)
+    else res.status(200).send(targetPath)
+  })
+})
 
 //Connecting to Database:
 mongoose.connect(databaseURL);
