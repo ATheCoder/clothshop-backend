@@ -6,6 +6,9 @@ const checkCartAvailability = require('./checkCartAvailability')
 const getCategories = require('./getCategories')
 const category = require('./category')
 const colorRoute = require('./colorRoute')
+const addAbstractCloth = require('./addAbstractCloth')
+const addCloth = require('./addCloth')
+const deleteCloth = require('./deleteCloth')
 
 index.use('/', addCompleteCloth)
 index.use('/', getClothes)
@@ -14,5 +17,8 @@ index.use('/', checkCartAvailability)
 index.use('/', getCategories)
 index.use('/', category)
 index.use('/', colorRoute)
+index.use('/', addAbstractCloth)
+index.use('/', addCloth)
+index.use('/', deleteCloth)
 
 module.exports = index

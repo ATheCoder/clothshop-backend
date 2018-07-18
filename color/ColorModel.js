@@ -5,7 +5,12 @@ const isURL = require('validator').isURL
 let schema = mongoose.Schema({
   name: {type: String},
   hexCode: {type: String, validate: {validator: isHexColor, message: 'The Color you entered is not a valid Hex Color'}},
-  pictureURL: {type: String, validate: {validator: isURL, message: 'The URL entered is Invalid!'}}
+  pictureURL: {type: String, validate: {validator: isURL, message: 'The URL entered is Invalid!'}},
+  name_lower: String
+})
+
+schema.pre('save', function(){
+  this.name_lower = this.name.toLowerCase()
 })
 
 schema.post('save', function (error, doc, next) {
