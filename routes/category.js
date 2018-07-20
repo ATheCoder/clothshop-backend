@@ -14,11 +14,16 @@ category.delete('/category/:id', async (req, res) => {
 })
 
 category.post('/category/add', async (req, res) => {
-  try{
-    let newCategory = await addNewCategory(req.body.title)
-    res.status(200).json(newCategory)
-  }catch(e){
-    res.status(500).send(e.message)
+  if(req.body.title){
+    try{
+      let newCategory = await addNewCategory(req.body.title)
+      res.status(200).json(newCategory)
+    }catch(e){
+      res.status(500).send(e.message)
+    }
+  }
+  else{
+    res.status(400).send('Invalid Arguments')
   }
 })
 
