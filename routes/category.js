@@ -3,7 +3,7 @@ const deleteCategory = require('../category/deleteCategory')
 const addNewCategory = require('../category/addNewCategory')
 const filterByCategory = require('../cloth/filterByCategory')
 const getAllCategories = require('../category/getAllCategories')
-
+//dd
 category.delete('/category/:id', async (req, res) => {
   try {
     await deleteCategory(req.params.id)
