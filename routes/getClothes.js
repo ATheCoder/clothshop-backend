@@ -17,7 +17,7 @@ getClothes.get('/getClothes', async (req, res) => {
       console.log('Started!')
       let allClothes = await getAllClothes()
       console.log('Ended!' + allClothes)
-      res.status(200).json(allClothes)
+      res.status(200).send('KOS NANAT')
     }
   }catch(e){
     res.status(500).send(e.message)
