@@ -20,29 +20,29 @@ const abstractCloth2 = {
 }
 
 const abstractCloth3 = {
-    title: 'Two Part Bikini',
-    pictureURL: 'http://arasharbabi.com/uploads/9122668-1-red.jpg',
-    color: 'Red',
-    price: '5',
-    category: 'Bikini',
+    title: 'Black & White Beautiful Floral Skirt',
+    pictureURL: 'http://arasharbabi.com/uploads/DB1115BW-2.jpg',
+    color: 'Black',
+    price: '25',
+    category: 'Skirt',
     featured: 'true'
 }
 
 const abstractCloth4 = {
-    title: 'Myriam Lingerie Set',
-    pictureURL: 'http://arasharbabi.com/uploads/download.jpg',
-    color: 'Black',
-    price: '5',
-    category: 'Lingerie',
+    title: 'High Waist Pleated Mini Flare Skirt',
+    pictureURL: 'http://arasharbabi.com/uploads/1510796063344293512.jpg',
+    color: 'Crimson',
+    price: '15',
+    category: 'Skirt',
     featured: 'true'
 }
 
 const abstractCloth5 = {
-    title: 'Bluebella Lingerie',
-    pictureURL: 'http://arasharbabi.com/uploads/ede3fa3c6139f190c5c8af12cffecee9_ee04a9a2-e33a-4fa7-b395-2aa1445c85f0_large.jpg',
-    color: 'Black',
-    price: '5',
-    category: 'Lingerie',
+    title: 'Lovely Navy Blue',
+    pictureURL: 'http://arasharbabi.com/uploads/2339062_370042.jpg',
+    color: 'Navy Blue',
+    price: '25',
+    category: 'Skirt',
     featured: 'true'
 }
 
