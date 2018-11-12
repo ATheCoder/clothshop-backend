@@ -8,6 +8,7 @@ const routes = require('./routes/index')
 const multer = require('multer')
 const path = require('path')
 const fs = require('fs')
+const addTestDB = require('./testDB')
 
 const swaggerUi = require('swagger-ui-express')
 const YAML = require('yamljs');
@@ -41,8 +42,15 @@ app.post('/api/upload', upload.single("file"), (req, res) => {
 mongoose.connect(databaseURL);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+db.once('open', async function() {
   console.log('Successfully connected to database at: ' + databaseURL)
+  db.dropDatabase()
+  try{
+    await addTestDB()
+    console.log('Test Database has been added!')
+  }catch(e){
+    console.log(e.message)
+  }
 });
 
 //Staring Express Server:

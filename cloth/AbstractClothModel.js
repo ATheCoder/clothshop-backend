@@ -6,6 +6,7 @@ let schema = new mongoose.Schema({
   title_lower: String,
   price: Number,
   category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
+  color: {type: mongoose.Schema.Types.ObjectId, ref: 'Color'},
   pictureURL: String
 })
 
